@@ -1,6 +1,6 @@
 export default interface Cat {
-  id?: number;
+  id?: string;
   name: string;
   breed: string;
-  createdAt: Date;
+  createdAt?: Date;
 }

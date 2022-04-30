@@ -10,7 +10,7 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "types": ["node"],
+    "types": ["jest", "node"],
     "moduleResolution": "node"
   },
   "include": ["src", "test"]
