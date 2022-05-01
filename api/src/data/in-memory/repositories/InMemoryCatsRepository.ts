@@ -10,7 +10,8 @@ class InMemoryCatsRepository implements CatsRepository {
         id: "94337a83-2e6a-4836-bf85-0057fbb4a25c",
         name: "Tommy",
         breed: "Absinio",
-        createdAt: new Date()
+        createdAt: new Date(),
+        profilePictureUrl: "https://thiscatdoesnotexist.com"
       }
     ]
   ) {}
@@ -31,7 +32,7 @@ class InMemoryCatsRepository implements CatsRepository {
   search(q: string): Promise<Cat[]> {
     throw new Error("Method not implemented.");
   }
-  
+
   update(cat: Cat): Promise<Cat> {
     throw new Error("Method not implemented.");
   }

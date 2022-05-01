@@ -11,17 +11,22 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import AppContainer from "../AppContainer";
 import { catsState } from "../AppState";
 import { CatCard } from "../components";
+import { CatsService } from "../services";
 
 const HomeView = (props: {}) => {
   const navigate = useNavigate();
-  const allCats = useRecoilValue(catsState);
+  const [cats, setCats] = useRecoilState(catsState);
 
   useEffect(() => {
     document.title = "My Cats";
+
+    CatsService.get()
+      .then((result) => setCats(result))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -46,7 +51,7 @@ const HomeView = (props: {}) => {
               </Stack>
             </Flex>
             <Wrap spacing={8} justify="space-between" alignItems="center">
-              {allCats.map((c, i) => (
+              {cats.map((c, i) => (
                 <WrapItem
                   cursor="pointer"
                   onClick={() => navigate(`/cats/${c.id}`)}

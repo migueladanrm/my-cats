@@ -3,7 +3,8 @@ import { Cat } from "../../../models";
 
 @Entity({ name: "cat" })
 export default class CatEntity implements Cat {
-  id?: number;
+  profilePictureUrl: string;
+  id?: string;
   name: string;
   breed: string;
   createdAt: Date;

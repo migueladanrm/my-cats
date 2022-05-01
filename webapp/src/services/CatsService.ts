@@ -1,10 +1,12 @@
+import axios from "axios";
 import { Cat } from "../models";
 
 class CatsService {
   constructor() {}
 
   async get(): Promise<Cat[]> {
-    throw new Error("Not implemented yet!");
+    const response = await axios.get<Cat[]>("/api/cats");
+    return response.data;
   }
 
   async add(cat: Cat): Promise<Cat> {
@@ -12,4 +14,4 @@ class CatsService {
   }
 }
 
-export default CatsService;
+export default new CatsService() as CatsService;
