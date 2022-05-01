@@ -5,7 +5,7 @@ import { sessionState } from "../AppState";
 
 const NavBar = () => {
   return (
-    <Grid flexDirection="row" background="gray.700" boxShadow="base" h="56px">
+    <Grid flexDirection="row" background="cyan.700" boxShadow="base">
       <Container
         maxW="container.2xl"
         fontSize="16px"
@@ -16,7 +16,7 @@ const NavBar = () => {
         <Flex
           flexDirection="row"
           justifyContent="space-between"
-          h="56px"
+          h="100%"
           alignItems="center"
         >
           <Flex alignItems="center" alignSelf="center" flexDirection="row">
