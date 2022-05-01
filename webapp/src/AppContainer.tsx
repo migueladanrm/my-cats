@@ -9,7 +9,7 @@ const AppContainer = (props: { children?: React.ReactNode }) => {
         <Grid h="60px">
           <NavBar />
         </Grid>
-        <Grid>{props.children}</Grid>
+        <Grid pt={4}>{props.children}</Grid>
       </Flex>
     </>
   );
