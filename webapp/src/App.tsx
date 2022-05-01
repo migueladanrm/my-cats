@@ -17,8 +17,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomeView />} />
-            <Route path="/cats/:id" element={<CatProfileView />} />
             <Route path="/add-cat" element={<AddCatView />} />
+            <Route path="/cats/:catId" element={<CatProfileView />} />
           </Routes>
         </BrowserRouter>
         {/* </AppContainer> */}

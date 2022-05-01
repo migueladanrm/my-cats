@@ -9,14 +9,21 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import AppContainer from "../AppContainer";
 import { catsState } from "../AppState";
 import { CatCard } from "../components";
 
 const HomeView = (props: {}) => {
+  const navigate = useNavigate();
   const allCats = useRecoilValue(catsState);
+
+  useEffect(() => {
+    document.title = "My Cats";
+  }, []);
+
   return (
     <>
       <AppContainer>
@@ -30,7 +37,7 @@ const HomeView = (props: {}) => {
                 <Link to="/add-cat">
                   <Button
                     leftIcon={<AddIcon />}
-                    colorScheme="teal"
+                    colorScheme="pink"
                     variant="solid"
                   >
                     Add Cat
@@ -40,7 +47,10 @@ const HomeView = (props: {}) => {
             </Flex>
             <Wrap spacing={8} justify="space-between" alignItems="center">
               {allCats.map((c, i) => (
-                <WrapItem>
+                <WrapItem
+                  cursor="pointer"
+                  onClick={() => navigate(`/cats/${c.id}`)}
+                >
                   <CatCard cat={c} key={`cat-${i}`} />
                 </WrapItem>
               ))}

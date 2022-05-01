@@ -1,6 +1,6 @@
 import { Flex, Grid, Text } from "@chakra-ui/react";
 import React from "react";
-import { NavBar } from "./components";
+import { Footer, NavBar } from "./components";
 
 const AppContainer = (props: { children?: React.ReactNode }) => {
   return (
@@ -9,8 +9,11 @@ const AppContainer = (props: { children?: React.ReactNode }) => {
         <Grid h="60px">
           <NavBar />
         </Grid>
-        <Grid pt={4}>{props.children}</Grid>
+        <Grid py={4}>{props.children}</Grid>
       </Flex>
+      <Grid>
+        <Footer />
+      </Grid>
     </>
   );
 };
