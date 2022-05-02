@@ -22,7 +22,7 @@ const CatCard = (props: { cat: Cat }) => {
       overflow="hidden"
       background="white"
     >
-      <Image src={cat.profilePhoto} alt={`Cat '${cat.name}' profile picture`} />
+      <Image src={cat.profilePicture} alt={`Cat '${cat.name}' profile picture`} />
 
       <Box p="6">
         <Box display="flex" alignItems="baseline">

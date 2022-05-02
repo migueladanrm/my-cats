@@ -28,7 +28,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_CONNECTON_STRING: postgres://mycats:h3ll0w0rld@postgres:5432/mycats
+      DB_CONNECTION_STRING: postgres://mycats:mycats@postgres:5432/mycats
       PORT: 80
     expose:
       - 80

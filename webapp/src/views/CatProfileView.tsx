@@ -40,7 +40,7 @@ const CatProfileView = (props: {}) => {
         <Container maxW="container.lg">
           <Flex direction="column">
             <Flex>
-              <Avatar size="xl" src={cat?.profilePhoto} boxShadow="lg">
+              <Avatar size="xl" src={cat?.profilePicture} boxShadow="lg">
                 <AvatarBadge boxSize="1em" bg="green.500" />
               </Avatar>
               <Flex alignSelf="center" direction="column" ml={6}>

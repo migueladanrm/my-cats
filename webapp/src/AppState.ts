@@ -28,7 +28,7 @@ const catsState = atom<Cat[]>({
       id: "gato-5",
       name: "Gato #5",
     },
-  ].map((c) => ({ ...c, profilePhoto: "https://thiscatdoesnotexist.com" })),
+  ].map((c) => ({ ...c, profilePicture: "https://thiscatdoesnotexist.com" })),
 });
 
 const sessionState = atom({
