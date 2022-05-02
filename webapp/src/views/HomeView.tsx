@@ -15,6 +15,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import AppContainer from "../AppContainer";
 import { catsState } from "../AppState";
 import { CatCard } from "../components";
+import { Cat } from "../models";
 import { CatsService } from "../services";
 
 const HomeView = (props: {}) => {
@@ -55,8 +56,9 @@ const HomeView = (props: {}) => {
                 <WrapItem
                   cursor="pointer"
                   onClick={() => navigate(`/cats/${c.id}`)}
+                  key={`cat-wrap-item-${i}`}
                 >
-                  <CatCard cat={c} key={`cat-${i}`} />
+                  <CatCard cat={c as Cat} key={`cat-card-${i}`} />
                 </WrapItem>
               ))}
             </Wrap>

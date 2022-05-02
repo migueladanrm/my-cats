@@ -31,7 +31,7 @@ const CatProfileView = (props: {}) => {
   useEffect(() => {
     const targetCat = allCats.find((c) => c.id === catId);
     document.title = `My Cats / ${targetCat?.name}`;
-    setCat(targetCat);
+    setCat(targetCat as Cat);
   }, []);
 
   return (

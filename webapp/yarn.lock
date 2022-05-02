@@ -5063,6 +5063,11 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
+fluentvalidation-ts@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/fluentvalidation-ts/-/fluentvalidation-ts-2.2.2.tgz#21cd04c60760515eac8d73640ea718d71c353780"
+  integrity sha512-ZVBNfYtmfGu+hFIvtL1s+J+pVhP61XoFJihs/I4Ld3NYECqpbYUbZCWIIFNbFEL37wha9/odRCN+MvgBOJwysQ==
+
 focus-lock@^0.9.1:
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.9.2.tgz#9d30918aaa99b1b97677731053d017f82a540d5b"

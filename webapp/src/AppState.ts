@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { Cat } from "./models";
 
-const catsState = atom<Cat[]>({
+const catsState = atom<Partial<Cat>[]>({
   key: "cats",
   default: [
     {
@@ -41,4 +41,11 @@ const sessionState = atom({
   },
 });
 
-export { catsState, sessionState };
+const progressSpinnerState = atom({
+  key: "progressDialog",
+  default: {
+    isOpen: false,
+  },
+});
+
+export { catsState, progressSpinnerState, sessionState };
