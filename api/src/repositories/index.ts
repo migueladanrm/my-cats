@@ -1,3 +1,4 @@
+import CatTrackingRepository from "./CatTrackingRepository";
 import CatsRepository from "./CatsRepository";
 
-export { CatsRepository };
+export { CatTrackingRepository, CatsRepository };

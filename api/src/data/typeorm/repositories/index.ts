@@ -1,3 +1,4 @@
 import TypeOrmCatsRepository from "./TypeOrmCatsRepository";
+import TypeOrmCatTrackingRepository from "./TypeOrmCatTrackingRepository";
 
-export { TypeOrmCatsRepository };
+export { TypeOrmCatTrackingRepository, TypeOrmCatsRepository };

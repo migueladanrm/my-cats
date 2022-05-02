@@ -1,3 +1,4 @@
+import CatTrackingService from "./CatTrackingService";
 import CatsService from "./CatsService";
 
-export { CatsService };
+export { CatTrackingService, CatsService };

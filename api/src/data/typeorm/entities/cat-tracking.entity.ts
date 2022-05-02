@@ -1,12 +1,19 @@
-import { Point } from "geojson";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Feature, Point } from "geojson";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn
+} from "typeorm";
 import { TrackingPoint } from "../../../models";
 import CatEntity from "./cat.entity";
 //import { GeoPoint2D } from "../../../models/TrackingPoint";
 
 @Entity({ name: "cat_tracking" })
 export default class CatTrackingEntity implements TrackingPoint {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @ManyToOne(() => CatEntity, (cat) => cat.id, { nullable: false })

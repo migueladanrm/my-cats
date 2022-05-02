@@ -2,7 +2,6 @@ import { Router } from "express";
 import { Cat } from "../models";
 import { CatsService } from "../services";
 import { NewCatValidator } from "../validators";
-import CatTrackingRoute from "./CatTrackingRoute";
 
 const CatsRoute = (catsService: CatsService) =>
   Router()
@@ -51,7 +50,6 @@ const CatsRoute = (catsService: CatsService) =>
         .delete(req.params.id)
         .then((_) => res.sendStatus(200))
         .catch((err) => res.status(400).json(err))
-    )
-    .use("/:catId/tracking", CatTrackingRoute(catsService));
+    );
 
 export default CatsRoute;

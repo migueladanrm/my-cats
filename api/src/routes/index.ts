@@ -1,3 +1,4 @@
 import CatsRoute from "./CatsRoute";
+import CatTrackingRoute from "./CatTrackingRoute";
 
-export { CatsRoute };
+export { CatTrackingRoute, CatsRoute };

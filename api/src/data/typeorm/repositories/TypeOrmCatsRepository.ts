@@ -12,7 +12,7 @@ export default class TypeOrmCatsRepository implements CatsRepository {
     const result = await AppDataSource.createQueryBuilder()
       .insert()
       .into(CatEntity)
-      .values({ ...cat, id: uuid() })
+      .values(cat)
       .returning("*")
       .execute();
 

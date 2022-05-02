@@ -1,9 +1,9 @@
-import { Column, Entity, Index, PrimaryColumn } from "typeorm";
+import { Column, Entity, Index, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Cat } from "../../../models";
 
 @Entity({ name: "cat" })
 class CatEntity implements Cat {
-  @PrimaryColumn("uuid")
+  @PrimaryGeneratedColumn("uuid")
   id?: string;
 
   @Column({ type: "varchar", length: 64, nullable: false })

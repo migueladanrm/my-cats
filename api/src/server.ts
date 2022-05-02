@@ -5,35 +5,52 @@ import morgan from "morgan";
 import Container from "typedi";
 import { InMemoryCatsRepository } from "./data/in-memory/repositories";
 import { AppDataSource } from "./data/typeorm";
-// import { createConnection } from "./data/typeorm/ormconfig";
-import { TypeOrmCatsRepository } from "./data/typeorm/repositories";
+import {
+  TypeOrmCatTrackingRepository,
+  TypeOrmCatsRepository
+} from "./data/typeorm/repositories";
 import environment from "./environment";
-import { CatsRepository } from "./repositories";
-import { CatsRoute } from "./routes";
-import { CatsService } from "./services";
+import { CatsRepository, CatTrackingRepository } from "./repositories";
+import { CatsRoute, CatTrackingRoute } from "./routes";
+import { CatsService, CatTrackingService } from "./services";
 import log from "./telemetry";
 
 const MyCatsServer = async () => {
   const { port } = environment;
 
   AppDataSource.initialize()
-  .then(() => log.info("Database connection complete"))
-  .catch((err) => log.fatal(err));
+    .then(() => log.info("Database connection complete"))
+    .catch((err) => log.fatal(err));
 
   // const db = createConnection();
   // console.log(db);
   let catsRepository: CatsRepository;
+  let catTrackingRepository: CatTrackingRepository;
   //catsRepository = new InMemoryCatsRepository();
+  catTrackingRepository = new TypeOrmCatTrackingRepository();
   catsRepository = new TypeOrmCatsRepository();
+
   const catsService = new CatsService(catsRepository);
+  const catTrackingService = new CatTrackingService(catTrackingRepository);
 
   const app = express()
     .use(morgan("dev"))
+    .use((req, res, next) => {
+      res
+        .header("Access-Control-Allow-Origin", "*")
+        .header("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS")
+        .header(
+          "Access-Control-Allow-Headers",
+          "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials"
+        );
+      next();
+    })
     .use(bodyParser.json())
     .get("/", (req, res) => {
       res.send(`<h1 style="font-family:Arial, sans-serif;">Hello, world!</h1>`);
     })
-    .use("/cats", CatsRoute(catsService));
+    .use("/cats", CatsRoute(catsService))
+    .use("/tracking",CatTrackingRoute(catTrackingService));
 
   return http
     .createServer(app)
