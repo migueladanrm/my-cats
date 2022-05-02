@@ -9,7 +9,8 @@ export const AppDataSource = new DataSource({
   logging: true,
   migrationsRun: true,
   entities: [__dirname + "/../**/*.entity.{js,ts}"],
-  migrations: [__dirname + "/../**/migration/*.{js,ts}"],
+  migrations: [__dirname + "/../**/migrations/*.{js,ts}"],
+  subscribers:[__dirname + "/../**/subscribers/*.{js,ts}"],
   migrationsTableName: "__migrations",
   namingStrategy: new SnakeNamingStrategy()
 });
