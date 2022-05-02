@@ -15,18 +15,18 @@ class InMemoryCatsRepository implements CatsRepository {
       }
     ]
   ) {}
-  
+
   async add(cat: Partial<Cat>): Promise<Cat> {
     cat.id = uuid();
     cat.createdAt = new Date();
     this.cats.push(cat as Cat);
     return cat as Cat;
   }
-  delete(id: number): Promise<boolean> {
+  delete(id: string): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
 
-  getById(id: number): Promise<Cat> {
+  getById(id: string): Promise<Cat> {
     throw new Error("Method not implemented.");
   }
 
@@ -34,7 +34,7 @@ class InMemoryCatsRepository implements CatsRepository {
     throw new Error("Method not implemented.");
   }
 
-  update(cat: Cat): Promise<Cat> {
+  update(id: string, cat: Cat): Promise<Cat> {
     throw new Error("Method not implemented.");
   }
 

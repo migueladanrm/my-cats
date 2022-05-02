@@ -12,4 +12,6 @@ RUN yarn build
 
 EXPOSE 80
 
-ENTRYPOINT ["node", "dist/index.js"]
+WORKDIR /app/dist
+
+ENTRYPOINT ["node", "index.js"]
