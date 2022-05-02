@@ -10,6 +10,21 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@automapper/classes@^8.3.3":
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/@automapper/classes/-/classes-8.3.3.tgz#f877008c098e8441217ec5233596c3582875a04d"
+  integrity sha512-wPpxe3HtsSa0dbZrwg8Jz0aLV7R14FN4u1rNewONc7Z2W4F2o68CGEQ/S/YW5vVmr1w7g5Z+vNUwQAj11uv9dQ==
+
+"@automapper/core@^8.3.3":
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/@automapper/core/-/core-8.3.3.tgz#3ef9a2cc00b2e1ed1319f8482b73caa6ac116cec"
+  integrity sha512-KXqdaPLqiTi+WMf67+EgCt2h+Q5pr6xNqMhaa5wGAZLapQEGi8ZEq3hsNm64y0YrBIVRXemMBUSs4DRvDhdSSw==
+
+"@automapper/pojos@^8.3.3":
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/@automapper/pojos/-/pojos-8.3.3.tgz#64f726593504ef0b7a40570664d819ce09180e57"
+  integrity sha512-Z4oFkCm2ZnAq/WbkETh7vE5gmUfRXChlVBptDMOKHraZvf+NMFLHiPJb/7LIm/NJN6N8/G6XLNw6DgDYSfv1HA==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
@@ -643,6 +658,11 @@
     "@types/express-serve-static-core" "^4.17.18"
     "@types/qs" "*"
     "@types/serve-static" "*"
+
+"@types/geojson@^7946.0.8":
+  version "7946.0.8"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.8.tgz#30744afdb385e2945e22f3b033f897f76b1f12ca"
+  integrity sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA==
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
@@ -1763,6 +1783,11 @@ gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
+
+geojson@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/geojson/-/geojson-0.5.0.tgz#3cd6c96399be65b56ee55596116fe9191ce701c0"
+  integrity sha1-PNbJY5m+ZbVu5VWWEW/pGRznAcA=
 
 get-caller-file@^2.0.5:
   version "2.0.5"
@@ -3843,6 +3868,11 @@ typedi@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/typedi/-/typedi-0.10.0.tgz#e8f9a5ee100b84addbdfb57fe90d8d9ed2a21dea"
   integrity sha512-v3UJF8xm68BBj6AF4oQML3ikrfK2c9EmZUyLOfShpJuItAqVBHWP/KtpGinkSsIiP6EZyyb6Z3NXyW9dgS9X1w==
+
+typeorm-naming-strategies@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/typeorm-naming-strategies/-/typeorm-naming-strategies-4.1.0.tgz#1ec6eb296c8d7b69bb06764d5b9083ff80e814a9"
+  integrity sha512-vPekJXzZOTZrdDvTl1YoM+w+sUIfQHG4kZTpbFYoTsufyv9NIBRe4Q+PdzhEAFA2std3D9LZHEb1EjE9zhRpiQ==
 
 typeorm@^0.3.6:
   version "0.3.6"

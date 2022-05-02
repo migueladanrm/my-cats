@@ -10,11 +10,11 @@ class CatsService {
     return this.catsRepository.add(cat);
   }
 
-  async delete(id: number): Promise<boolean> {
+  async delete(id: string): Promise<boolean> {
     return this.catsRepository.delete(id);
   }
 
-  async getById(id: number): Promise<Cat | undefined> {
+  async getById(id: string): Promise<Cat | undefined> {
     return this.catsRepository.getById(id);
   }
 
@@ -26,8 +26,8 @@ class CatsService {
     return this.catsRepository.search(q);
   }
 
-  async update(cat: Cat): Promise<Cat> {
-    return this.catsRepository.update(cat);
+  async update(id: string, cat: Cat): Promise<Cat> {
+    return this.catsRepository.update(id, cat);
   }
 }
 

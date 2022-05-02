@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import Container from 'typedi';
+import { AppDataSource } from './data/typeorm';
 import MyCatsServer from "./server";
 import log from "./telemetry";
 

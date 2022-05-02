@@ -2,11 +2,11 @@ import { Cat } from "../models";
 
 interface CatsRepository {
   add(cat: Partial<Cat>): Promise<Cat>;
-  delete(id: number): Promise<boolean>;
+  delete(id: string): Promise<boolean>;
   get(page: number, size: number): Promise<Cat[]>;
-  getById(id: number): Promise<Cat>;
+  getById(id: string): Promise<Cat>;
   search(q: string): Promise<Cat[]>;
-  update(cat: Cat): Promise<Cat>;
+  update(id:string,cat: Cat): Promise<Cat>;
 }
 
 export default CatsRepository;

@@ -11,10 +11,11 @@ class InMemoryCatsRepository implements CatsRepository {
         name: "Tommy",
         breed: "Absinio",
         createdAt: new Date(),
-        profilePictureUrl: "https://thiscatdoesnotexist.com"
+        profilePicture: "https://thiscatdoesnotexist.com"
       }
     ]
   ) {}
+  
   async add(cat: Partial<Cat>): Promise<Cat> {
     cat.id = uuid();
     cat.createdAt = new Date();

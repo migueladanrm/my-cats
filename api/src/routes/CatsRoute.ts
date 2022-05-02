@@ -2,6 +2,7 @@ import { Router } from "express";
 import { Cat } from "../models";
 import { CatsService } from "../services";
 import { NewCatValidator } from "../validators";
+import CatTrackingRoute from "./CatTrackingRoute";
 
 const CatsRoute = (catsService: CatsService) =>
   Router()
@@ -22,7 +23,7 @@ const CatsRoute = (catsService: CatsService) =>
     .get("/:id", (req, res) => {
       const id = req.params.id;
       catsService
-        .getById(Number.parseInt(id))
+        .getById(id)
         .then((cats) => res.status(200).json(cats))
         .catch((err) => res.status(400).json(err));
     })
@@ -38,7 +39,19 @@ const CatsRoute = (catsService: CatsService) =>
         res.status(400).json(validation);
       }
     })
-    .patch("/:id", (req, res) => {})
-    .delete("/:id", (req, res) => {});
+    .patch("/:id", (req, res) => {
+      const cat = req.body as Cat;
+      catsService
+        .update(req.params.id, cat)
+        .then((result) => res.status(200).json(result))
+        .catch((err) => res.status(400).json(err));
+    })
+    .delete("/:id", (req, res) =>
+      catsService
+        .delete(req.params.id)
+        .then((_) => res.sendStatus(200))
+        .catch((err) => res.status(400).json(err))
+    )
+    .use("/:catId/tracking", CatTrackingRoute(catsService));
 
 export default CatsRoute;
