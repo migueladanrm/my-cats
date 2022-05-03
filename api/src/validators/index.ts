@@ -1,3 +1,3 @@
-import NewCatValidator from "./NewCatValidator";
+import NewCatValidator from "./new-cat.validator";
 
 export { NewCatValidator };

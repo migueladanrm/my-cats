@@ -1,4 +1,4 @@
-import Cat from "./Cat";
-import TrackingPoint from "./TrackingPoint";
+import Cat from "./cat.model";
+import TrackingPoint from "./tracking-point.model";
 
 export { Cat, TrackingPoint };
