@@ -2,7 +2,7 @@ import { AsyncValidator, Validator } from "fluentvalidation-ts";
 import { Cat } from "../models";
 import { defaultValidatorMessage } from "./misc";
 
-export default class AddCatValidator extends Validator<Cat> {
+export default class BaseCatValidator extends Validator<Cat> {
   constructor() {
     super();
 

@@ -1,3 +1,3 @@
-import AddCatValidator from "./AddCatValidator";
+import BaseCatValidator from "./BaseCatValidator";
 
-export {AddCatValidator};
+export {BaseCatValidator };

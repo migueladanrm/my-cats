@@ -11,10 +11,10 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Footer, NavBar } from "./components";
-import { useProgressSpinner } from "./hooks";
+import { useSpinner } from "./hooks";
 
 const AppContainer = (props: { children?: React.ReactNode }) => {
-  const progressSpinner = useProgressSpinner();
+  const spinner = useSpinner();
 
   return (
     <>
@@ -30,8 +30,10 @@ const AppContainer = (props: { children?: React.ReactNode }) => {
 
       <Modal
         isCentered
-        isOpen={progressSpinner.isOpen}
-        onClose={() => progressSpinner.show(false)}
+        closeOnEsc={false}
+        closeOnOverlayClick={false}
+        isOpen={spinner.isOpen}
+        onClose={() => spinner.show(false)}
       >
         <ModalOverlay />
         <ModalContent bg="transparent" boxShadow="none">

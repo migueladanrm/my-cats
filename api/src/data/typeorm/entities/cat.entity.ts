@@ -22,10 +22,10 @@ class CatEntity implements Cat {
   @Column({ type: "varchar", length: 128, nullable: true })
   profilePicture?: string;
 
-  @Column({ type: "timestamp", nullable: false, default: () => "now()" })
+  @Column({ type: "timestamp without time zone", nullable: false, default: () => "now()" })
   createdAt?: Date;
 
-  @Column({ type: "timestamp", nullable: true })
+  @Column({ type: "timestamp without time zone", nullable: true })
   lastSeen?: Date;
 }
 

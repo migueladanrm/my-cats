@@ -1,3 +1,3 @@
-import useProgressSpinner from "./useProgressDialog";
+import useSpinner from "./useSpinner";
 
-export { useProgressSpinner };
+export { useSpinner };

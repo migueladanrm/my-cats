@@ -16,7 +16,7 @@ export default class CatTrackingEntity implements TrackingPoint {
   @PrimaryGeneratedColumn("increment")
   id?: number;
 
-  @ManyToOne(() => CatEntity, (cat) => cat.id, { nullable: false })
+  @ManyToOne(() => CatEntity, (cat) => cat.id, { nullable: false, onDelete: "CASCADE" })
   @JoinColumn({ name: "cat_id" })
   catId: string;
 
@@ -28,6 +28,6 @@ export default class CatTrackingEntity implements TrackingPoint {
   })
   point: Point;
 
-  @Column({ type: "timestamp", nullable: false, default: () => "now()" })
+  @Column({ type: "timestamp without time zone", nullable: false, default: () => "now()" })
   createdAt: Date;
 }

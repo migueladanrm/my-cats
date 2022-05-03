@@ -1,66 +1,38 @@
-import { Badge, Box, Image } from "@chakra-ui/react";
+import {
+  Avatar,
+  AvatarBadge,
+  Box,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Cat } from "../models";
-import { StarIcon } from "@chakra-ui/icons";
+import moment from "moment";
 
 const CatCard = (props: { cat: Cat }) => {
   const { cat } = props;
   return (
     <Box
-      maxW="sm"
-      borderWidth="1px"
+      w="xs"
+      borderWidth="0px"
       borderRadius="lg"
       overflow="hidden"
-      background="white"
+      p={4}
+      _hover={{ bg: "white", boxShadow: "base" }}
     >
-      <Image src={cat.profilePicture} alt={`Cat '${cat.name}' profile picture`} />
+      <Avatar size="full" src={cat?.profilePicture} boxShadow="md">
+        <AvatarBadge boxSize="10em" bg="green.500" mb={4} mr={4} />
+      </Avatar>
 
-      <Box p="6">
-        <Box display="flex" alignItems="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
-            New
-          </Badge>
-          <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            ml="2"
-          >
-          </Box>
-        </Box>
-
-        <Box
-          mt="1"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-        >
+      <VStack mt={4}>
+        <Text fontSize="3xl" fontWeight={600}>
           {cat.name}
-        </Box>
-
-        {/* <Box>
-          {property.formattedPrice}
-          <Box as="span" color="gray.600" fontSize="sm">
-            / wk
-          </Box>
-        </Box> */}
-{/* 
-        <Box display="flex" mt="2" alignItems="center">
-          {Array(5)
-            .fill("")
-            .map((_, i) => (
-              <StarIcon
-                key={i}
-                color={i < property.rating ? "teal.500" : "gray.300"}
-              />
-            ))}
-          <Box as="span" ml="2" color="gray.600" fontSize="sm">
-            {property.reviewCount} reviews
-          </Box>
-        </Box> */}
-      </Box>
+        </Text>
+        {cat.lastSeen !== undefined && (
+          <Text color="gray" fontSize="lg" fontStyle="italic">
+            {moment(cat.lastSeen).toNow()}
+          </Text>
+        )}
+      </VStack>
     </Box>
   );
 };

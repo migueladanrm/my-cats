@@ -6,4 +6,5 @@ export default interface Cat {
   profilePicture?: string;
   birthdate?: Date;
   createdAt?: Date;
+  lastSeen?: Date;
 }

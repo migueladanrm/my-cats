@@ -1,4 +1,5 @@
 interface TrackingPoint {
+  id?:number;
   point: GeoPoint2D;
   createdAt: Date;
 }

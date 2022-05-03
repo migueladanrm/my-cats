@@ -3,32 +3,7 @@ import { Cat } from "./models";
 
 const catsState = atom<Partial<Cat>[]>({
   key: "cats",
-  default: [
-    {
-      id: "gato-0",
-      name: "Gato #0",
-    },
-    {
-      id: "gato-1",
-      name: "Gato #1",
-    },
-    {
-      id: "gato-2",
-      name: "Gato #2",
-    },
-    {
-      id: "gato-3",
-      name: "Gato #3",
-    },
-    {
-      id: "gato-4",
-      name: "Gato #4",
-    },
-    {
-      id: "gato-5",
-      name: "Gato #5",
-    },
-  ].map((c) => ({ ...c, profilePicture: "https://thiscatdoesnotexist.com" })),
+  default: []
 });
 
 const sessionState = atom({
@@ -41,11 +16,11 @@ const sessionState = atom({
   },
 });
 
-const progressSpinnerState = atom({
+const spinnerState = atom({
   key: "progressDialog",
   default: {
     isOpen: false,
   },
 });
 
-export { catsState, progressSpinnerState, sessionState };
+export { catsState, spinnerState, sessionState };

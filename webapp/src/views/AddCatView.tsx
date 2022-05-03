@@ -21,10 +21,10 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import AppContainer from "../AppContainer";
 import { catsState } from "../AppState";
-import { useProgressSpinner } from "../hooks";
+import { useSpinner } from "../hooks";
 import { Cat } from "../models";
 import { CatsService } from "../services";
-import { AddCatValidator } from "../validators";
+import { BaseCatValidator } from "../validators";
 
 const AddCatView = (props: {}) => {
   const inputFile = useRef<HTMLInputElement | null>(null);
@@ -47,10 +47,10 @@ const AddCatView = (props: {}) => {
     {}
   );
 
-  const progressSpinner = useProgressSpinner();
+  const spinner = useSpinner();
 
   const addCat = (cat: Cat) => {
-    progressSpinner.show(true);
+    spinner.show(true);
     CatsService.add(cat)
       .then((createdCat) => {
         setAllCats(allCats.concat(createdCat));
@@ -59,11 +59,11 @@ const AddCatView = (props: {}) => {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => progressSpinner.show(false));
+      .finally(() => spinner.show(false));
   };
 
   const handleAddButtonClick = () => {
-    const validation = new AddCatValidator().validate(cat);
+    const validation = new BaseCatValidator().validate(cat);
     if (0 < Object.keys(validation).length) {
       setFormValidation(validation);
       return;
@@ -71,7 +71,6 @@ const AddCatView = (props: {}) => {
 
     addCat(cat);
   };
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -89,7 +88,6 @@ const AddCatView = (props: {}) => {
           <Flex direction="column" mt={4}>
             <Flex direction="column" alignItems="center">
               <Avatar
-                colorScheme="teal"
                 icon={<Icon color="gray.50" as={FaCat} h={16} w={16} />}
                 p={8}
                 size="2xl"
