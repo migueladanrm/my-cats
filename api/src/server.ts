@@ -2,8 +2,6 @@ import bodyParser from "body-parser";
 import express from "express";
 import * as http from "http";
 import morgan from "morgan";
-import Container from "typedi";
-import { InMemoryCatsRepository } from "./data/in-memory/repositories";
 import { AppDataSource } from "./data/typeorm";
 import {
   TypeOrmCatTrackingRepository,
@@ -15,18 +13,16 @@ import { CatsRoute, CatTrackingRoute } from "./routes";
 import { CatsService, CatTrackingService } from "./services";
 import log from "./telemetry";
 
-const MyCatsServer = async () => {
+const App = async () => {
   const { port } = environment;
 
   AppDataSource.initialize()
     .then(() => log.info("Database connection complete"))
     .catch((err) => log.fatal(err));
 
-  // const db = createConnection();
-  // console.log(db);
   let catsRepository: CatsRepository;
   let catTrackingRepository: CatTrackingRepository;
-  //catsRepository = new InMemoryCatsRepository();
+
   catTrackingRepository = new TypeOrmCatTrackingRepository();
   catsRepository = new TypeOrmCatsRepository();
 
@@ -63,4 +59,4 @@ const MyCatsServer = async () => {
     });
 };
 
-export default MyCatsServer;
+export default App;

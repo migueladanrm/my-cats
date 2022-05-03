@@ -1,5 +1,8 @@
 import { Cat } from "../models";
 
+/**
+ * Cats Repository
+ */
 interface CatsRepository {
   add(cat: Partial<Cat>): Promise<Cat>;
   delete(id: string): Promise<boolean>;

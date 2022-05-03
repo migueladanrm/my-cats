@@ -1,9 +1,7 @@
-import { Connection, DataSource } from "typeorm";
-import { Cat } from "../../../models";
-import { CatsRepository } from "../../../repositories";
 import { CatEntity } from "../entities";
 import { AppDataSource } from "../ormconfig";
-import { v4 as uuid } from "uuid";
+import { Cat } from "../../../models";
+import { CatsRepository } from "../../../repositories";
 
 export default class TypeOrmCatsRepository implements CatsRepository {
   constructor() {}
@@ -65,7 +63,7 @@ export default class TypeOrmCatsRepository implements CatsRepository {
       .where("id = :id", { id })
       .returning("id")
       .execute();
-      
+
     return 0 < result.affected ? this.getById(id) : undefined;
   }
 }

@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { rmSync } from "fs";
 import { TrackingPoint } from "../models";
 import { CatTrackingService } from "../services";
 import { getRequestPaginationParams } from "../utils/express.utils";
 
+/**
+ * Cat Tracking Resource
+ * @param catTrackingService Cat Tracking Service
+ * @returns
+ */
 const CatTrackingRoute = (catTrackingService: CatTrackingService) =>
   Router()
     .get("/:catId", (req, res) => {

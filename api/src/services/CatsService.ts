@@ -1,8 +1,9 @@
-import { Inject, Service } from "typedi";
 import { Cat } from "../models";
 import { CatsRepository } from "../repositories";
 
-@Service()
+/**
+ * Cats Service.
+ */
 class CatsService {
   constructor(private catsRepository: CatsRepository) {}
 

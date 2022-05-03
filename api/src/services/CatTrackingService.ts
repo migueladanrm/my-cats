@@ -1,6 +1,9 @@
 import { TrackingPoint } from "../models";
 import { CatTrackingRepository } from "../repositories";
 
+/**
+ * Cat Tracking Service
+ */
 class CatTrackingService {
   constructor(private catTrackingRepository: CatTrackingRepository) {}
 

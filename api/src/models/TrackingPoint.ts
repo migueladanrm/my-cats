@@ -1,5 +1,3 @@
-import { Point } from "geojson";
-
 export default interface TrackingPoint {
   id?: number;
   point: GeoPoint2D | any;

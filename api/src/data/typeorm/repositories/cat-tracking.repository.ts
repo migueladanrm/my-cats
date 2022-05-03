@@ -1,7 +1,7 @@
 import { AppDataSource } from "..";
 import { TrackingPoint } from "../../../models";
-import { CatTrackingRepository } from "../../../repositories";
 import { CatTrackingEntity } from "../entities";
+import { CatTrackingRepository } from "../../../repositories";
 import GeoJSON from "geojson";
 
 export default class TypeOrmCatTrackingRepository implements CatTrackingRepository {

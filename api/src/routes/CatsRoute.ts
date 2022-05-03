@@ -1,19 +1,25 @@
 import { Router } from "express";
 import { Cat } from "../models";
 import { CatsService } from "../services";
+import { getRequestPaginationParams } from "../utils/express.utils";
 import { NewCatValidator } from "../validators";
 
+/**
+ * Cats Resource
+ * @param catsService Cats Service
+ * @returns
+ */
 const CatsRoute = (catsService: CatsService) =>
   Router()
-    .get("/", (req, res) =>
+    .get("/", (req, res) => {
+      const { page, size } = getRequestPaginationParams(req);
       catsService
-        .get()
+        .get(page, size)
         .then((cats) => res.status(200).json(cats))
-        .catch((err) => res.status(400).json(err))
-    )
+        .catch((err) => res.status(400).json(err));
+    })
     .get("/search", (req, res) => {
       const { q } = req.query;
-
       catsService
         .search(q?.toString())
         .then((cats) => res.status(200).json(cats))
@@ -28,7 +34,7 @@ const CatsRoute = (catsService: CatsService) =>
     })
     .post("/", (req, res) => {
       const cat = req.body as Cat;
-      const validation = new NewCatValidator().validateAsync(cat);
+      const validation = new NewCatValidator().validate(cat);
       if (Object.keys(validation).length < 1) {
         catsService
           .add(cat)

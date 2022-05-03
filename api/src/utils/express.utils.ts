@@ -1,8 +1,12 @@
 import { Request } from "express";
 import environment from "../environment";
 
+/**
+ * Extract pagination parameters from an Express HTTP Request.
+ * @param req HTTP Request
+ * @returns Page and Size request query parameters.
+ */
 function getRequestPaginationParams(req: Request): { page: number; size: number } {
-  const q = req.query.q;
   const page = req.query.page;
   const size = req.query.size;
 

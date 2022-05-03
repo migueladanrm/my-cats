@@ -1,10 +1,13 @@
 import { EventSubscriber, EntitySubscriberInterface, InsertEvent } from "typeorm";
-import log from "../../../telemetry";
 import { CatEntity, CatTrackingEntity } from "../entities";
 import { AppDataSource } from "../ormconfig";
+import log from "../../../telemetry";
 
+/**
+ * Updates Cat Last Seen field when a new Tracking Point is inserted.
+ */
 @EventSubscriber()
-export class PostSubscriber implements EntitySubscriberInterface<CatTrackingEntity> {
+export class CatTrackingSubscriber implements EntitySubscriberInterface<CatTrackingEntity> {
   listenTo() {
     return CatTrackingEntity;
   }
