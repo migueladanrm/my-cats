@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import App from "./server";
+import App from "./app";
 import log from "./telemetry";
 
 log.info("Starting MyCats API...");
 
-const server = App();
+const app = App();
 
-export { server };
+export { app };
