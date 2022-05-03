@@ -1,10 +1,11 @@
 import { DataSource } from "typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
+import environment from "../../environment";
 
 export const AppDataSource = new DataSource({
   name: "default",
   type: "postgres",
-  url: process.env.DB_CONNECTION_STRING || "postgres://mycats:mycats@localhost:5432/mycats",
+  url: environment.dbConnectionString || "postgres://mycats:mycats@localhost:5432/mycats",
   synchronize: true,
   logging: true,
   migrationsRun: true,

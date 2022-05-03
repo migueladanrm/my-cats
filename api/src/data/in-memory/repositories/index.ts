@@ -1,3 +1,3 @@
-import InMemoryCatsRepository from "./InMemoryCatsRepository";
+import InMemoryCatsRepository from "./cats.repository";
 
 export { InMemoryCatsRepository };

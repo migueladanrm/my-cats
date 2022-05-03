@@ -9,31 +9,28 @@ import {
   Grid,
   Icon,
   Input,
-  Select,
   Text,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import { ValidationErrors } from "fluentvalidation-ts/dist/ValidationErrors";
-import { ChangeEvent, ChangeEventHandler, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FaCat } from "react-icons/fa";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import AppContainer from "../AppContainer";
 import { catsState } from "../AppState";
+import { FileUploaderDialog } from "../components";
 import { useSpinner } from "../hooks";
 import { Cat } from "../models";
 import { CatsService } from "../services";
 import { BaseCatValidator } from "../validators";
 
 const AddCatView = (props: {}) => {
-  const inputFile = useRef<HTMLInputElement | null>(null);
-  const [image, setImage] = useState<any>();
   const navigate = useNavigate();
 
-  const onSelectProfilePictureButtonClick = () => {
-    inputFile.current?.click();
-  };
+  const selectImageDialog = useDisclosure();
 
   const [allCats, setAllCats] = useRecoilState(catsState);
   const [cat, setCat] = useState<Cat>({
@@ -78,6 +75,10 @@ const AddCatView = (props: {}) => {
     setCat({ ...cat, [name]: value });
   };
 
+  const handleImageUrlChange = (imageUrl: string) => {
+    setCat({ ...cat, profilePicture: imageUrl });
+  };
+
   return (
     <AppContainer>
       <Grid>
@@ -89,16 +90,10 @@ const AddCatView = (props: {}) => {
             <Flex direction="column" alignItems="center">
               <Avatar
                 icon={<Icon color="gray.50" as={FaCat} h={16} w={16} />}
-                p={8}
+                p={cat.profilePicture ? 0 : 8}
                 size="2xl"
                 boxShadow="md"
-                // src={inputFile?.current?.files[0]}
-              />
-              <input
-                type="file"
-                id="file"
-                ref={inputFile}
-                style={{ display: "none" }}
+                src={cat.profilePicture}
               />
 
               <Button
@@ -106,10 +101,10 @@ const AddCatView = (props: {}) => {
                 variant="solid"
                 leftIcon={<Icon as={MdAddPhotoAlternate} />}
                 mt={4}
-                onClick={onSelectProfilePictureButtonClick}
+                onClick={selectImageDialog.onOpen}
                 boxShadow="base"
               >
-                Find Image...
+                Change Image...
               </Button>
             </Flex>
 
@@ -181,6 +176,13 @@ const AddCatView = (props: {}) => {
           </Button>
         </Grid>
       </Grid>
+
+      <FileUploaderDialog
+        imageUrl={cat.profilePicture}
+        isOpen={selectImageDialog.isOpen}
+        onClose={selectImageDialog.onClose}
+        onImageUrlChange={handleImageUrlChange}
+      />
     </AppContainer>
   );
 };

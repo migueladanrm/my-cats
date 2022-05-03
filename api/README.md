@@ -1,5 +1,14 @@
 # MyCats: API
 
+## Running
+```bash
+docker compose up --build -d
+```
+
+```bash
+cp .env.example .env
+```
+
 ## Migrations
 Generate migrations
 ```bash

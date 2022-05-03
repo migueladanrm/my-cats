@@ -25,7 +25,7 @@ class CatEntity implements Cat {
   @Column({ type: "timestamp without time zone", nullable: false, default: () => "now()" })
   createdAt?: Date;
 
-  @Column({ type: "timestamp without time zone", nullable: true })
+  @Column({ type: "timestamp without time zone", nullable: false, default: () => "now()" })
   lastSeen?: Date;
 }
 

@@ -202,7 +202,7 @@ const CatProfileView = (props: {}) => {
                             </Tooltip>
                           </GridItem>
                           <GridItem alignSelf="center">
-                            <Text fontSize="xl">Angora</Text>
+                            <Text fontSize="xl">{cat?.breed}</Text>
                           </GridItem>
                           <GridItem colSpan={2}>
                             <Divider />
@@ -211,7 +211,7 @@ const CatProfileView = (props: {}) => {
                             <Tooltip label="Birthdate">
                               <span>
                                 <Icon
-                                  color="cyan.700"
+                                  color="cyan.600"
                                   as={FaBirthdayCake}
                                   h={8}
                                   w={8}
@@ -237,7 +237,7 @@ const CatProfileView = (props: {}) => {
                             <Tooltip label="Added on Timestamp">
                               <span>
                                 <Icon
-                                  color="cyan.700"
+                                  color="cyan.600"
                                   as={MdOutlineAccessTime}
                                   h={8}
                                   w={8}

@@ -6,12 +6,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Icon,
-  IconButton,
   Input,
-  InputGroup,
-  InputLeftAddon,
-  InputLeftElement,
-  InputRightAddon,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -19,12 +14,13 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Text,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import { ValidationErrors } from "fluentvalidation-ts/dist/ValidationErrors";
 import { ChangeEvent, useEffect, useState } from "react";
 import { FaCat } from "react-icons/fa";
+import { FileUploaderDialog } from "../components";
 import { Cat } from "../models";
 import { BaseCatValidator } from "../validators";
 
@@ -39,10 +35,16 @@ const EditCatDialog = (props: {
     {}
   );
 
+  const selectImageDialog = useDisclosure();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     setCat({ ...cat, [name]: value });
+  };
+
+  const handleImageUrlChange = (imageUrl: string) => {
+    setCat({ ...cat, profilePicture: imageUrl });
   };
 
   const handleSaveButtonClick = () => {
@@ -74,12 +76,21 @@ const EditCatDialog = (props: {
               >
                 <Flex direction="column" alignItems="center">
                   <Avatar
-                    colorScheme="teal"
                     icon={<Icon color="gray.50" as={FaCat} h={16} w={16} />}
-                    p={8}
+                    p={cat.profilePicture ? 0 : 8}
                     size="2xl"
                     boxShadow="md"
+                    src={cat.profilePicture}
                   />
+                  <Button
+                    colorScheme="teal"
+                    variant="solid"
+                    mt={4}
+                    onClick={selectImageDialog.onOpen}
+                    boxShadow="base"
+                  >
+                    Change Image...
+                  </Button>
                 </Flex>
                 <FormLabel htmlFor="cat-name">Cat Name</FormLabel>
                 <Input
@@ -145,6 +156,13 @@ const EditCatDialog = (props: {
           </ModalFooter>
         </ModalContent>
       </Modal>
+
+      <FileUploaderDialog
+        imageUrl={cat.profilePicture}
+        isOpen={selectImageDialog.isOpen}
+        onClose={selectImageDialog.onClose}
+        onImageUrlChange={handleImageUrlChange}
+      />
     </>
   );
 };

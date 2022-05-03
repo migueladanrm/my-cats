@@ -1,6 +1,6 @@
 import CatCard from "./CatCard";
+import FileUploaderDialog from "./ProfilePictureDialog";
 import Footer from "./Footer";
-//import CatMap from "./MapContainer";
 import NavBar from "./NavBar";
 
-export { CatCard, Footer, NavBar };
+export { CatCard, FileUploaderDialog, Footer, NavBar };
