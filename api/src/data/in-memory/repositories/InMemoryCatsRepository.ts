@@ -1,45 +1,39 @@
-import { Service } from "typedi";
+import { v4 as uuid } from "uuid";
 import { Cat } from "../../../models";
 import { CatsRepository } from "../../../repositories";
-import { v4 as uuid } from "uuid";
-@Service("catsRepository")
+
 class InMemoryCatsRepository implements CatsRepository {
-  constructor(
-    private cats: Cat[] = [
-      {
-        id: "94337a83-2e6a-4836-bf85-0057fbb4a25c",
-        name: "Tommy",
-        breed: "Absinio",
-        createdAt: new Date(),
-        profilePicture: "https://thiscatdoesnotexist.com"
-      }
-    ]
-  ) {}
+  constructor(private cats: Cat[] = []) {}
 
   async add(cat: Partial<Cat>): Promise<Cat> {
-    cat.id = uuid();
+    if (!cat.id) cat.id = uuid();
     cat.createdAt = new Date();
     this.cats.push(cat as Cat);
     return cat as Cat;
   }
-  delete(id: string): Promise<boolean> {
-    throw new Error("Method not implemented.");
+
+  async delete(id: string): Promise<boolean> {
+    this.cats = this.cats.filter((c) => c.id !== id);
+    return true;
   }
 
-  getById(id: string): Promise<Cat> {
-    throw new Error("Method not implemented.");
+  async getById(id: string): Promise<Cat> {
+    return this.cats.find((c) => c.id === id);
   }
 
-  search(q: string): Promise<Cat[]> {
-    throw new Error("Method not implemented.");
+  async search(q: string): Promise<Cat[]> {
+    return this.cats.filter((c) => c.name.toLowerCase().includes(q.toLowerCase()));
   }
 
-  update(id: string, cat: Cat): Promise<Cat> {
-    throw new Error("Method not implemented.");
+  async update(id: string, cat: Cat): Promise<Cat> {
+    let updatedCat = await this.getById(id);
+    updatedCat = { ...updatedCat, ...cat };
+    this.cats = this.cats.filter((c) => c.id !== id).concat(updatedCat);
+    return updatedCat;
   }
 
   async get(page: number, size: number): Promise<Cat[]> {
-    return this.cats;
+    return this.cats.slice(page * size, page * size + size);
   }
 }
 
