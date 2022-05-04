@@ -2,7 +2,7 @@ name: Self-Hosted Deployment
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ main ]
 
 jobs:
   deploy:
