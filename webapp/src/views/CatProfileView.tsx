@@ -41,6 +41,7 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import EditCatDialog from "./EditCatDialog";
 import { CatsService } from "../services";
 import { useSpinner } from "../hooks";
+import { CatTrackingMap } from "../components";
 
 const CatProfileView = (props: {}) => {
   const { catId } = useParams();
@@ -255,7 +256,29 @@ const CatProfileView = (props: {}) => {
                     </Flex>
                   </TabPanel>
                   <TabPanel>
-                    <Grid></Grid>
+                    <Flex direction="column">
+                      {cat && (
+                        <CatTrackingMap
+                          cat={cat}
+                          googleMapsApiKey=""
+                          trackingPoint={{
+                            point: {
+                              longitude: 0.0,
+                              latitude: 0.0,
+                            },
+                            createdAt: "",
+                          }}
+                        />
+                      )}
+                      <Button
+                        alignSelf="center"
+                        colorScheme="pink"
+                        mt={8}
+                        variant="solid"
+                      >
+                        Refresh
+                      </Button>
+                    </Flex>
                   </TabPanel>
                 </TabPanels>
               </Tabs>
