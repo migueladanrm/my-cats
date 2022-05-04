@@ -40,5 +40,3 @@ curl -X POST -H "Content-Type: application/json" \
     -d '{ "point": { "latitude": 10.3361592, "longitude": -84.4307032 } }' \
     https://{API-BASE-URL}/tracking/{CAT-ID}
 ```
-
-10.3361592,-84.4307032,18.13z
