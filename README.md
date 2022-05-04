@@ -1,4 +1,5 @@
 # MyCats
+*Miguel Rivas*
 
 ## Overview
 This repo contains the source of an Node/Express API and React web app (both on TypeScript).
@@ -12,9 +13,9 @@ This repo contains the source of an Node/Express API and React web app (both on 
 ├── docker-compose.yml  # Docker Compose script for easy deployment
 └── nginx               # Nginx proxy configuration file
 ```
-
-
 Also, you'll find a directory description under API folder.
+
+You can take a look at: https://migue.xyz
 
 ## Running with Docker
 1. Copy and fill the environment file,

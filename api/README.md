@@ -22,6 +22,10 @@
 ```
 Only relevant files are shown
 
+### Architecture
+This project is based on Dependency Injection pattern, business logic has been develop over abstract data access contracts.
+This makes easier to change data providers and doing testing.
+
 ## Running
 1. Create a copy of environment file,
 
