@@ -1,5 +1,4 @@
 import {
-  CircularProgress,
   Flex,
   Grid,
   Modal,
@@ -7,7 +6,6 @@ import {
   ModalContent,
   ModalOverlay,
   Spinner,
-  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import { Footer, NavBar } from "./components";

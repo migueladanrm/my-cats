@@ -21,7 +21,7 @@ import {
 import { ChangeEvent, useEffect, useState } from "react";
 import { MdAddPhotoAlternate } from "react-icons/md";
 
-const FileUploaderDialog = (props: {
+const ProfilePictureDialog = (props: {
   imageUrl?: string;
   isOpen: boolean;
   onClose: () => void;
@@ -98,4 +98,4 @@ const FileUploaderDialog = (props: {
   );
 };
 
-export default FileUploaderDialog;
+export default ProfilePictureDialog;

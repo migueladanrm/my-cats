@@ -20,7 +20,7 @@ import {
 import { ValidationErrors } from "fluentvalidation-ts/dist/ValidationErrors";
 import { ChangeEvent, useEffect, useState } from "react";
 import { FaCat } from "react-icons/fa";
-import { FileUploaderDialog } from "../components";
+import { ProfilePictureDialog } from "../components";
 import { Cat } from "../models";
 import { BaseCatValidator } from "../validators";
 
@@ -157,7 +157,7 @@ const EditCatDialog = (props: {
         </ModalContent>
       </Modal>
 
-      <FileUploaderDialog
+      <ProfilePictureDialog
         imageUrl={cat.profilePicture}
         isOpen={selectImageDialog.isOpen}
         onClose={selectImageDialog.onClose}

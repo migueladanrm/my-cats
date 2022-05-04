@@ -1,0 +1,13 @@
+name: Self-Hosted Deployment
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build & Deploy
+        run: docker compose --project-name my-cats --env-file ~/my-cats.env up --build -d

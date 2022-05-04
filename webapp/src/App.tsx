@@ -13,15 +13,15 @@ function App() {
   return (
     <ChakraProvider theme={AppTheme}>
       <RecoilRoot>
-        {/* <AppContainer> */}
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomeView />} />
-            <Route path="/add-cat" element={<AddCatView />} />
-            <Route path="/cats/:catId" element={<CatProfileView />} />
-          </Routes>
+          <AppContainer>
+            <Routes>
+              <Route path="/" element={<HomeView />} />
+              <Route path="/add-cat" element={<AddCatView />} />
+              <Route path="/cats/:catId" element={<CatProfileView />} />
+            </Routes>
+          </AppContainer>
         </BrowserRouter>
-        {/* </AppContainer> */}
       </RecoilRoot>
     </ChakraProvider>
   );

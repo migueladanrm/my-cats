@@ -17,6 +17,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "axios": "^0.27.2",
+    "env-cmd": "^10.1.0",
     "fluentvalidation-ts": "^2.2.2",
     "framer-motion": "^6",
     "moment": "^2.29.3",
@@ -30,7 +31,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f ./.env react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,9 +1,10 @@
-import axios from "axios";
+import moment from "moment";
 
-const getHttpClient = axios.create({
-  baseURL: "/api",
-  timeout: 3000,
-  headers: {},
-});
+const catIsIdle = (lastSeen: Date): boolean => {
+  const last = moment(lastSeen);
+  const now = moment(new Date());
 
-export { getHttpClient };
+  return moment.duration(now.diff(last)).asMinutes() >= 60;
+};
+
+export { catIsIdle };

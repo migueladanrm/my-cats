@@ -19,15 +19,14 @@ import { FaCat } from "react-icons/fa";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import AppContainer from "../AppContainer";
 import { catsState } from "../AppState";
-import { FileUploaderDialog } from "../components";
+import { ProfilePictureDialog } from "../components";
 import { useSpinner } from "../hooks";
 import { Cat } from "../models";
 import { CatsService } from "../services";
 import { BaseCatValidator } from "../validators";
 
-const AddCatView = (props: {}) => {
+const AddCatView = () => {
   const navigate = useNavigate();
 
   const selectImageDialog = useDisclosure();
@@ -80,7 +79,7 @@ const AddCatView = (props: {}) => {
   };
 
   return (
-    <AppContainer>
+    <>
       <Grid>
         <Container maxW="container.lg">
           <Text fontSize="4xl" fontWeight={600}>
@@ -177,13 +176,13 @@ const AddCatView = (props: {}) => {
         </Grid>
       </Grid>
 
-      <FileUploaderDialog
+      <ProfilePictureDialog
         imageUrl={cat.profilePicture}
         isOpen={selectImageDialog.isOpen}
         onClose={selectImageDialog.onClose}
         onImageUrlChange={handleImageUrlChange}
       />
-    </AppContainer>
+    </>
   );
 };
 export default AddCatView;

@@ -1,12 +1,7 @@
-import {
-  Avatar,
-  AvatarBadge,
-  Box,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { Cat } from "../models";
+import { Avatar, AvatarBadge, Box, Text, VStack } from "@chakra-ui/react";
 import moment from "moment";
+import { Cat } from "../models";
+import { catIsIdle } from "../utils";
 
 const CatCard = (props: { cat: Cat }) => {
   const { cat } = props;
@@ -20,7 +15,12 @@ const CatCard = (props: { cat: Cat }) => {
       _hover={{ bg: "white", boxShadow: "base" }}
     >
       <Avatar size="full" src={cat?.profilePicture} boxShadow="md">
-        <AvatarBadge boxSize="10em" bg="green.500" mb={4} mr={4} />
+        <AvatarBadge
+          boxSize="10em"
+          bg={catIsIdle(cat.lastSeen!) ? "yellow.500" : "green.500"}
+          mb={4}
+          mr={4}
+        />
       </Avatar>
 
       <VStack mt={4}>

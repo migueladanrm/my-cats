@@ -4,13 +4,13 @@ import { TrackingPoint } from "../models";
 class CatTrackingService {
   constructor() {}
 
-  BASE_URL = "http://localhost:5500";
+  private BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   async getLast(catId: string): Promise<TrackingPoint> {
     return axios
       .get<TrackingPoint>(`${this.BASE_URL}/tracking/${catId}/last`)
-      .then((lastPoint) => {
-        return lastPoint;
+      .then((response) => {
+        return response.data;
       })
       .catch((err) => {
         return err;

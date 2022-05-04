@@ -3,17 +3,7 @@ import { Cat } from "./models";
 
 const catsState = atom<Partial<Cat>[]>({
   key: "cats",
-  default: []
-});
-
-const sessionState = atom({
-  key: "session",
-  default: {
-    user: {
-      displayName: "John Doe",
-      userName: "jdoe",
-    },
-  },
+  default: [],
 });
 
 const spinnerState = atom({
@@ -23,4 +13,4 @@ const spinnerState = atom({
   },
 });
 
-export { catsState, spinnerState, sessionState };
+export { catsState, spinnerState };

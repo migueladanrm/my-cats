@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_USER: mycats
       POSTGRES_DB: mycats
-      POSTGRES_PASSWORD: mycats
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - 5432:5432
     networks:
@@ -28,7 +28,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_CONNECTION_STRING: postgres://mycats:mycats@postgres:5432/mycats
+      DB_CONNECTION_STRING: postgres://mycats:${POSTGRES_PASSWORD}@postgres:5432/mycats
       PORT: 80
     expose:
       - 80
@@ -40,6 +40,9 @@ services:
     restart: unless-stopped
     build:
       context: ./webapp
+      args:
+        - API_BASE_URL=/api
+        - GMAPS_API_KEY=${GMAPS_API_KEY}
     expose:
       - 80
     networks:
@@ -54,7 +57,7 @@ services:
     networks:
       - default
     ports:
-      - 9090:80
+      - ${PROXY_PORT}:80
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     command: [ nginx, "-g", "daemon off;" ]
